@@ -11,6 +11,10 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
+## WARNING:
+
+This package is in beta and still being tested. Please do not use it yet.
+
 ## Details
 
 This package allows Flutter projects to utilize State Management to overcome
