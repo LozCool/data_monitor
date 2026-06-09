@@ -11,29 +11,42 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Details
+
+This package allows Flutter projects to utilize State Management to overcome
+some of the limitations enforced by the framework.
+
+Its main use is to create data repositories or models that allow callers to be
+notified when changes are made to member fields. These changes are tracked
+internally and cause Widgets that use the data to be rebuilt.
+
+No more calls to setState().
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Can be used (with more efficiency) to rebuild `StatelessWidget`. You can remove
+all the verbose State code that is usually associated with a `StatefulWidget`.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+The package is very simple to use. Just add code like the following to your
+data model class:
+
+```dart
+@monitor
+int count;
+
+@monitor
+String name = 'A Name';
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
+A fully working Flutter Application that describes how to use the various
+features is available in the `/example` folder.
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Also included is a Code Generator that can be used with the `build_runner` package
+to automatically generate boilerplate code from @annotations like the ones
+seen above.
