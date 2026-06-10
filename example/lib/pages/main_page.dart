@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:data_listener/data_listener.dart';
+import 'package:data_monitor/data_listener.dart';
 
 import '../models/model_a.dart';
 import '../models/model_b.dart';
