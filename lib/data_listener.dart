@@ -10,7 +10,7 @@ export 'package:data_monitor/data_listener.dart';
 /// or model. It reacts to changes in that repository by rebuilding itself
 /// in the widget tree whenever changes in the source occur.
 ///
-/// The widget requires a builder [Function] that describes part of the user
+/// The widget requires a builder `Function` that describes part of the user
 /// interface by building a constellation of other widgets that describe the
 /// user interface more concretely.
 ///
@@ -23,14 +23,14 @@ export 'package:data_monitor/data_listener.dart';
 /// the application. But, much more importantly, it can be used to track
 /// changes between various application components that want to communicate
 /// with each other. The changes to a single data model are passed seamlessly
-/// from one instance of a [DataListener] widget to other instances in the
+/// from one instance of a `DataListener` widget to other instances in the
 /// application that reference the same underlying data source. Changes can
 /// be sourced from anywhere.
 ///
-/// The first time a [DataListener] of a type is created, it instantiates an
+/// The first time a `DataListener` of a type is created, it instantiates an
 /// instance of the data model of that type. It is then internally tracked
-/// for changes. Also, a reference to that (singleton) instance can accessed
-/// elsewhere in the application by calling the static [model] method.
+/// for changes. Also, a reference to that (singleton) instance can be accessed
+/// from elsewhere in the application by calling the static `model` method.
 class DataListener<T> extends StatelessWidget
 {
   static final Map<Type, ChangeNotifier> models = {};

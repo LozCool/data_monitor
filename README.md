@@ -37,11 +37,14 @@ The package is very simple to use. Just add code like the following to your
 data model class:
 
 ```dart
-@monitor
-int count;
+@dataMonitor
+abstract class ModelData extends ChangeNotifier {
+  @monitor
+  int count;
 
-@monitor
-String name = 'A Name';
+  @monitor
+  String name = 'A Name';
+}
 ```
 
 ## Usage

@@ -1,3 +1,3 @@
-## 1.0.3
+## 1.0.4
 
-Fixed data_monitor imports / associations in /example directory.
+Updated documentation.
