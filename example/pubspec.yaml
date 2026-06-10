@@ -1,6 +1,6 @@
 name: example
 description: "Data Monitor package example."
-repository: https://github.com/LozCool/data_monitor/tree/master/example
+repository: https://github.com/LozCool/data_monitor
 version: 1.0.9
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  data_monitor: ^1.0.9
+  data_monitor: ^1.0.4
 
 dev_dependencies:
   flutter_test:
