@@ -11,10 +11,6 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-## WARNING:
-
-This package is in beta and still being tested. Please do not use it yet.
-
 ## Details
 
 This package allows Flutter projects to utilize State Management to overcome
@@ -54,6 +50,6 @@ features is available in the `/example` directory.
 
 ## Additional information
 
-Also included is a Code Generator that can be used with the `build_runner` package
-to automatically generate boilerplate code from @annotations like the ones
-seen above.
+You can `also use the `data_monitor_generators` package to automatically
+generate boilerplate code from @annotations like the ones seen above
+(using `build_runner`).
