@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:annotations/annotations.dart';
+import 'package:data_monitor/annotations.dart';
 
 part 'model_a.g.dart';
 

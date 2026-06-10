@@ -47,7 +47,7 @@ String name = 'A Name';
 ## Usage
 
 A fully working Flutter Application that describes how to use the various
-features is available in the `/example` folder.
+features is available in the `/example` package.
 
 ## Additional information
 

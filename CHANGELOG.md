@@ -1,3 +1,3 @@
-## 1.0.0
+## 1.0.2
 
-Initial release.
+Updated release for use with data_monitor_genekage.

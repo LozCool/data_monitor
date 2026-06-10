@@ -2,6 +2,8 @@ library;
 
 import 'package:flutter/widgets.dart';
 
+export 'package:data_monitor/data_listener.dart';
+
 /// A widget that does not have any mutable state.
 ///
 /// It does, however, take a type that can be described as a data repository,
