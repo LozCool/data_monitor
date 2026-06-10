@@ -1,5 +1,5 @@
-## 1.0.9
+## 1.0.10
 
-Added example/example.md
-
-Added lots of other code documentation.
+Added topics for pub.dev into pubspec.yaml:
+  codegen
+  state-management
