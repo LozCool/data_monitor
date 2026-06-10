@@ -1,3 +1,5 @@
-## 1.0.4
+## 1.0.9
 
-Updated documentation.
+Added example/example.md
+
+Added lots of other code documentation.

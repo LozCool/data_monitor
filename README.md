@@ -50,7 +50,7 @@ abstract class ModelData extends ChangeNotifier {
 ## Usage
 
 A fully working Flutter Application that describes how to use the various
-features is available in the `/example` package.
+features is available in the `/example` directory.
 
 ## Additional information
 
