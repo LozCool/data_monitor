@@ -1,3 +1,3 @@
-## 1.0.1
+## 1.0.2
 
 Updated release for use with data_monitor_generators.

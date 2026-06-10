@@ -1,6 +1,6 @@
 name: example
 description: "Data Monitor Code Generation Example."
-version: 1.0.1
+version: 1.0.2
 
 environment:
   sdk: ^3.12.0
