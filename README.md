@@ -50,6 +50,6 @@ features is available in the `/example` directory.
 
 ## Additional information
 
-You can `also use the `data_monitor_generators` package to automatically
+You can also use the `data_monitor_generators` package to automatically
 generate boilerplate code from @annotations like the ones seen above
 (using `build_runner`).

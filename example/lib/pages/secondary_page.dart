@@ -5,30 +5,20 @@ import 'package:data_monitor/data_listener.dart';
 import '../models/model_a.dart';
 import '../models/model_b.dart';
 
-class SecondaryPage extends StatefulWidget
+class SecondaryPage extends StatelessWidget
 {
-  final String title;
+  const SecondaryPage({super.key});
 
-  const SecondaryPage(
-      {required this.title,
-
-       super.key});
-
-  @override
-  State<SecondaryPage> createState() {
-    return _SecondaryPageState();
-  }
-}
-
-class _SecondaryPageState extends State<SecondaryPage>
-{
   @override
   Widget build(BuildContext context) {
+    ModelA modelA = DataListener.prepare(constructor: ModelA.new);
+    ModelB modelB = DataListener.prepare(constructor: ModelB.new);
+
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             centerTitle: true,
-            title: Text(widget.title)
+            title: Text('State Management Secondary Page')
         ),
         body: Center(
           child: Column(
@@ -37,42 +27,32 @@ class _SecondaryPageState extends State<SecondaryPage>
               const Text('You have pushed the button this many times:'),
               DataListener<ModelA>(
                 builder: ((BuildContext context) {
-                  ModelA model = DataListener.model<ModelA>();
-
                   return Text(
-                      '${model.testInteger}',
+                      '${modelA.testInteger}',
                       style: Theme.of(context).textTheme.headlineMedium
                   );
-                }),
-                constructor: ModelA.new,
+                })
               ),
               DataListener<ModelB>(
                 builder: ((BuildContext context) {
-                  ModelB model = DataListener.model<ModelB>();
-
                   return Text(
-                      '${model.testInteger}',
+                      '${modelB.testInteger}',
                       style: Theme.of(context).textTheme.headlineMedium
                   );
-                }),
-                constructor: ModelB.new,
+                })
               ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
                         onPressed: () {
-                          ModelA model = DataListener.model<ModelA>();
-
-                          model.testInteger++;
+                          modelA.testInteger++;
                         },
                         child: const Icon(Icons.add)
                     ),
                     TextButton(
                         onPressed: () {
-                          ModelB model = DataListener.model<ModelB>();
-
-                          model.testInteger++;
+                          modelB.testInteger++;
                         },
                         child: const Icon(Icons.add)
                     )

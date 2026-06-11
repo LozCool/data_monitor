@@ -14,7 +14,7 @@ export 'package:data_monitor/data_listener.dart';
 /// interface by building a constellation of other widgets that describe the
 /// user interface more concretely.
 ///
-/// The ModelListener widget will only be rebuilt when it receives change
+/// The `ModelListener` widget will only be rebuilt when it receives change
 /// notifications from the associated data model. This is an implementation
 /// detail as it subscribes for such notifications internally. Also, it
 /// tracks only changes to a specific data model (or repository) type.
@@ -24,13 +24,15 @@ export 'package:data_monitor/data_listener.dart';
 /// changes between various application components that want to communicate
 /// with each other. The changes to a single data model are passed seamlessly
 /// from one instance of a `DataListener` widget to other instances in the
-/// application that reference the same underlying data source. Changes can
-/// be sourced from anywhere.
+/// application that reference the same underlying data source (type). Changes
+/// can be sourced from anywhere.
 ///
-/// The first time a `DataListener` of a type is created, it instantiates an
-/// instance of the data model of that type. It is then internally tracked
-/// for changes. Also, a reference to that (singleton) instance can be accessed
-/// from elsewhere in the application by calling the static `model` method.
+/// You MUST call the `prepare` method prior to using a `DataListener` widget
+/// of the prepared type. Once prepared, this widget internally tracks changes
+/// to the associated data repository.
+///
+/// A reference to a 'prepared' data model can also be obtained from anywhere
+/// in the application by using the static `model` method.
 class DataListener<T> extends StatelessWidget
 {
   static final Map<Type, ChangeNotifier> models = {};
@@ -42,15 +44,11 @@ class DataListener<T> extends StatelessWidget
        required Key? listenerKey}) : super(key: listenerKey);
 
   factory DataListener(
-      {required Function constructor,
-       required Widget   Function(BuildContext) builder})
+      {required Widget Function(BuildContext) builder})
   {
-    GlobalKey       listenerKey = GlobalKey();
-    ChangeNotifier? model       = models[T];
+    GlobalKey listenerKey = GlobalKey();
 
-    model ??= models[T] = constructor();
-
-    model?.addListener(() {
+    (model<T>() as ChangeNotifier).addListener(() {
       Element element = listenerKey.currentContext as Element;
 
       element.markNeedsBuild();
@@ -61,12 +59,21 @@ class DataListener<T> extends StatelessWidget
   }
 
   static E model<E>() {
-    E? returnValue = models[E] as E;
+    E? model = models[E] as E?;
 
-    if (returnValue == null) {
-      throw Exception('Requested Model of type $E has not been instantiated.');
+    if (model == null) {
+      throw Exception('Requested Model of type $E has not been prepared.');
     }
-    return returnValue;
+    return model;
+  }
+
+  static E prepare<E>(
+      {required Function constructor}) {
+    E? model = models[E] as E?;
+
+    model ??= models[E] = constructor();
+
+    return model!;
   }
 
   @override

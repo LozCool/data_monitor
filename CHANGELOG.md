@@ -1,5 +1,9 @@
-## 1.1.0
+## 1.1.1
 
-Removed /fred directory.
+Greatly simplified user interface (API).
 
-Removed beta release warning and promoted to v1.1.0
+Updated /exaple. Now only uses StatelessWidget.
+
+Updated /example readme file.
+
+Update other documentation.

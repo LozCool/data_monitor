@@ -8,14 +8,13 @@ void main() {
 
 class MyApp extends StatelessWidget
 {
-  const MyApp(
-      {super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const MainPage(title: 'State Management Main Page'),
+        home: const MainPage(),
         theme: ThemeData(
           colorScheme: .fromSeed(seedColor: Colors.deepPurple)
         )
