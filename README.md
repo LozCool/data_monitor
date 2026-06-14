@@ -34,7 +34,7 @@ data model class:
 
 ```dart
 @dataMonitor
-abstract class ModelData extends ChangeNotifier {
+abstract class ModelData extends DataNotifier {
   @monitor
   int count;
 

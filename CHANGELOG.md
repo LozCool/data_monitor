@@ -1,7 +1,6 @@
-## 1.1.3
+## 1.1.4
 
-Now includes `MonitoredMap` that can be used very succinctly in a data
-model to listen to changes in the underlying Map using `DataListener`
+Minor corrections to ReadMe
 
-Now includes `MonitoredSet` that can be used very succinctly in a data
-model to listen to changes in the underlying Set using `DataListener`
+Modified visibility of various class members and fields
+for better documentation.

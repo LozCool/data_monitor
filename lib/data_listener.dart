@@ -39,14 +39,14 @@ export 'package:data_monitor/data_listener.dart';
 /// in the application by using the static `model` method.
 class DataListener<T> extends HookWidget
 {
-  static final Map<Type, DataNotifier> models = {};
+  static final Map<Type, DataNotifier> _models = {};
 
-  final VoidCallback                  listener;
-  final Widget Function(BuildContext) builder;
+  final VoidCallback                  _listener;
+  final Widget Function(BuildContext) _builder;
 
   const DataListener._(
-      {required this.builder,
-       required this.listener,
+      {required this._builder,
+       required this._listener,
        required Key listenerKey}) : super(key: listenerKey);
 
   factory DataListener(
@@ -68,7 +68,7 @@ class DataListener<T> extends HookWidget
   }
 
   static E model<E>() {
-    E? model = models[E] as E?;
+    E? model = _models[E] as E?;
 
     if (model == null) {
       throw Exception('Requested Model of type $E has not been prepared.');
@@ -78,9 +78,9 @@ class DataListener<T> extends HookWidget
 
   static E prepare<E>(
       {required Function constructor}) {
-    E? model = models[E] as E?;
+    E? model = _models[E] as E?;
 
-    model ??= models[E] = constructor();
+    model ??= _models[E] = constructor();
 
     return model!;
   }
@@ -89,10 +89,10 @@ class DataListener<T> extends HookWidget
   Widget build(BuildContext context) {
     useEffect(() {
       return () {
-        (model<T>() as DataNotifier).removeListener(listener);
+        (model<T>() as DataNotifier).removeListener(_listener);
       };
     }, []);
 
-    return builder(context);
+    return _builder(context);
   }
 }
