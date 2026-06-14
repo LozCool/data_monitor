@@ -3,42 +3,44 @@ import 'dart:collection';
 import 'package:data_monitor/data_notifier.dart';
 import 'package:data_monitor/data_listener.dart';
 
-class MonitoredList<T, E> extends ListBase<E?>
+class MonitoredMap<T, K, V> extends MapBase<K, V>
 {
   late final DataNotifier _model;
-       final List<E?>     _list = [];
+       final Map<K, V>    _map = {};
 
   bool _isInitialized = false;
 
   @override
-  E? operator [](int index) {
-    return _list[index];
+  V? operator [](Object? key) {
+    return _map[key];
   }
 
   @override
-  void operator []=(int index, E? element) {
-    _list[index] = element;
+  void operator []=(K key, V value) {
+    _map[key] = value;
 
     notify();
   }
 
   @override
-  int get length {
-    return _list.length;
+  Iterable<K> get keys {
+    return _map.keys;
   }
 
   @override
-  set length(int value) {
-    _list.length = value;
+  void clear() {
+    _map.clear();
 
     notify();
   }
 
   @override
-  void add(E? element) {
-    _list.add(element);
+  V? remove(Object? key) {
+    V? returnValue = _map.remove(key);
 
-    length = _list.length;
+    notify();
+
+    return returnValue;
   }
 
   void notify() {

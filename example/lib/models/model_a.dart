@@ -18,5 +18,7 @@ abstract class ModelAData extends DataNotifier
   @monitor
   String testString = '';
 
-  MonitoredList<ModelA, String> testList = MonitoredList<ModelA, String>();
+  MonitoredList<ModelA, String>     testList = MonitoredList<ModelA, String>();
+  MonitoredMap<ModelA, int, String> testMap  = MonitoredMap<ModelA, int, String>();
+  MonitoredSet<ModelA, String>      testSet  = MonitoredSet<ModelA, String>();
 }
