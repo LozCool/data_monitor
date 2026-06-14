@@ -7,34 +7,29 @@ You can create an example Flutter application that uses `data_monitor` by:
 
 2. Open the application in your favorite editor and delete `lib/main.dart`.
 
-3. From the `data_monitor` example repository at [github.com](https://github.com/LozCool/data_monitor/tree/master/example/lib),
-   insert the whole lib/ hierarchy into your local project:
-
-```
-  lib/
-    models/
-      model_a.dart
-      model_b.dart
-    pages/
-      main_page.dart
-      secondary_page.dart
-    main.dart
-```
-
-4. Add the following dependencies to your project's `pubspec.yaml` file:
+3. Add the following dependencies to your project's `pubspec.yaml` file:
 
 ```
   dependencies:
-    data_monitor: ^1.1.1
+    data_monitor: ^1.1.2
   
   dev_dependencies:
     build_runner: ^2.15.0
-    data_monitor_generators: ^1.1.1
+    data_monitor_generators: ^1.1.2
 ```
 
-5. Perform a `pub get` to get the packages listed above.
+4. Perform a `pub get` to get the packages listed above.
 
-6. Then (in a console) run the following command before you build / run
+5. In your editor, find the imported `data_monitor` package and it's
+   example/lib/ hierarchy. If you are using Visual Studio Code, for
+   example, it is at the bottom left and looks like this:
+
+    ![](example.png)
+
+6. Copy the whole /lib hierarchy to your local project (2 directories,
+   7 files).
+
+7. Then, in a console, run the following command before you build / run
    your application:
 
 ```

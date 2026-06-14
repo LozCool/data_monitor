@@ -9,8 +9,8 @@ part of 'model_b.dart';
 mixin _$ModelBData on ModelBData {
   @override
   set testInteger(int value) {
-    notifyListeners();
-
-    super.testInteger = value;
+    notify(() {
+      super.testInteger = value;
+    });
   }
 }

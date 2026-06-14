@@ -7,13 +7,17 @@ import '../models/model_b.dart';
 
 class SecondaryPage extends StatelessWidget
 {
-  const SecondaryPage({super.key});
+  late final ModelA modelA;
+  late final ModelB modelB;
+
+  SecondaryPage({super.key})
+  {
+    modelA = DataListener.prepare(constructor: ModelA.new);
+    modelB = DataListener.prepare(constructor: ModelB.new);
+  }
 
   @override
   Widget build(BuildContext context) {
-    ModelA modelA = DataListener.prepare(constructor: ModelA.new);
-    ModelB modelB = DataListener.prepare(constructor: ModelB.new);
-
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,

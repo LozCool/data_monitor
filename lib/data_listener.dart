@@ -2,6 +2,10 @@ library;
 
 import 'package:flutter/widgets.dart';
 
+import 'package:flutter_hooks/flutter_hooks.dart';
+
+import 'data_notifier.dart';
+
 export 'package:data_monitor/data_listener.dart';
 
 /// A widget that does not have any mutable state.
@@ -33,28 +37,33 @@ export 'package:data_monitor/data_listener.dart';
 ///
 /// A reference to a 'prepared' data model can also be obtained from anywhere
 /// in the application by using the static `model` method.
-class DataListener<T> extends StatelessWidget
+class DataListener<T> extends HookWidget
 {
-  static final Map<Type, ChangeNotifier> models = {};
+  static final Map<Type, DataNotifier> models = {};
 
+  final VoidCallback                  listener;
   final Widget Function(BuildContext) builder;
 
   const DataListener._(
       {required this.builder,
-       required Key? listenerKey}) : super(key: listenerKey);
+       required this.listener,
+       required Key listenerKey}) : super(key: listenerKey);
 
   factory DataListener(
       {required Widget Function(BuildContext) builder})
   {
     GlobalKey listenerKey = GlobalKey();
 
-    (model<T>() as ChangeNotifier).addListener(() {
+    void listener() {
       Element element = listenerKey.currentContext as Element;
 
       element.markNeedsBuild();
-    });
+    }
+    (model<T>() as DataNotifier).addListener(listener);
+
     return DataListener._(
         builder: builder,
+        listener: listener,
         listenerKey: listenerKey);
   }
 
@@ -78,6 +87,12 @@ class DataListener<T> extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      return () {
+        (model<T>() as DataNotifier).removeListener(listener);
+      };
+    }, []);
+
     return builder(context);
   }
 }

@@ -9,22 +9,15 @@ part of 'model_a.dart';
 mixin _$ModelAData on ModelAData {
   @override
   set testInteger(int value) {
-    notifyListeners();
-
-    super.testInteger = value;
+    notify(() {
+      super.testInteger = value;
+    });
   }
 
   @override
   set testString(String value) {
-    notifyListeners();
-
-    super.testString = value;
-  }
-
-  @override
-  set list(List<String> value) {
-    notifyListeners();
-
-    super.list = value;
+    notify(() {
+      super.testString = value;
+    });
   }
 }

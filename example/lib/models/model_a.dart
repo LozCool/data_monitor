@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:data_monitor/annotations.dart';
+import 'package:data_monitor/collections.dart';
+import 'package:data_monitor/data_notifier.dart';
 
 part 'model_a.g.dart';
 
@@ -10,7 +10,7 @@ class ModelA extends ModelAData with _$ModelAData
 }
 
 @dataMonitor
-abstract class ModelAData extends ChangeNotifier
+abstract class ModelAData extends DataNotifier
 {
   @monitor
   int testInteger = 0;
@@ -18,6 +18,5 @@ abstract class ModelAData extends ChangeNotifier
   @monitor
   String testString = '';
 
-  @monitor
-  List<String> list = [];
+  MonitoredList<ModelA, String> testList = MonitoredList<ModelA, String>();
 }
