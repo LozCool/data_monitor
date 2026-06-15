@@ -11,7 +11,7 @@ You can create an example Flutter application that uses `data_monitor` by:
 
 ```
   dependencies:
-    data_monitor: ^1.1.2
+    data_monitor: ^1.1.5
   
   dev_dependencies:
     build_runner: ^2.15.0

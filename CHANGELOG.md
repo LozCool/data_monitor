@@ -1,6 +1,11 @@
-## 1.1.4
+## 1.1.5
 
-Minor corrections to ReadMe
+All collections have been refactored. They now offer their functions
+in a much FASTER and scalable way.
 
-Modified visibility of various class members and fields
-for better documentation.
+`MonitoredList` now has the ability to be initialized upon creation:
+
+```dart
+  MonitoredList<ModelA, String> testList = MonitoredList.from(['A', 'B', 'C']);
+
+```
