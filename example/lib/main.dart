@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget
         debugShowCheckedModeBanner: false,
         home: MainPage(),
         theme: ThemeData(
-          colorScheme: .fromSeed(seedColor: Colors.deepPurple)
+            colorScheme: .fromSeed(seedColor: Colors.deepPurple)
         )
     );
   }

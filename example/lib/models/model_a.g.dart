@@ -7,17 +7,25 @@ part of 'model_a.dart';
 // **************************************************************************
 
 mixin _$ModelAData on ModelAData {
+  late final DataItem _testInteger = DataItem(testInteger, []);
+
   @override
   set testInteger(int value) {
-    notify(() {
-      super.testInteger = value;
-    });
+    if (_testInteger.setValue(value)) {
+      notify(() {
+        super.testInteger = value;
+      });
+    }
   }
+
+  late final DataItem _testString = DataItem(testString, []);
 
   @override
   set testString(String value) {
-    notify(() {
-      super.testString = value;
-    });
+    if (_testString.setValue(value)) {
+      notify(() {
+        super.testString = value;
+      });
+    }
   }
 }

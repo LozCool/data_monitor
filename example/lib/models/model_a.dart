@@ -1,5 +1,6 @@
 import 'package:data_monitor/annotations.dart';
 import 'package:data_monitor/collections.dart';
+import 'package:data_monitor/data_item.dart';
 import 'package:data_monitor/data_notifier.dart';
 
 part 'model_a.g.dart';

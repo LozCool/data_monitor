@@ -36,12 +36,40 @@ data model class:
 @dataMonitor
 abstract class ModelData extends DataNotifier {
   @monitor
-  int count;
+  int count = 0;
 
   @monitor
   String name = 'A Name';
 }
 ```
+
+## Caching Property Getters
+
+You can cache property 'values' internally to great effect, when used
+correctly. For example, if you had to collect data from a source that
+was slow or complicated, you could use the following:
+
+```dart
+@dataMonitor
+abstract class ModelData extends DataNotifier {
+  @monitor
+  String firstName = 'Joe';
+
+  @monitor
+  String lastName = 'Bloggs';
+
+  @cache
+  Future<String> get fullName async {
+    // Performs a big task asynchronously, such as getting data
+    // from an external database
+
+    return await humungous(firstName, lastName);
+  }
+}
+```
+
+In this example, the return value from 'humungous' is cached and
+only ever recalculated when either 'firstName' or 'lastName' change.
 
 ## Usage
 
