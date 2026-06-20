@@ -4,7 +4,7 @@ class DataNotifier extends ChangeNotifier
 {
   void notify([Function? notifier]) {
     if (notifier != null) {
-      notifier( );
+      notifier();
     }
     notifyListeners();
   }
