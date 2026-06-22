@@ -1,3 +1,7 @@
+## 1.1.7
+
+Fixed major bug where `DataItem` was not tracking value changes correctly.
+
 ## 1.1.6
 
 Added `@cache` annotation which allows property getters in a data model to

@@ -17,6 +17,7 @@ class DataItem
         property.isDirty = true;
       }
       returnValue = true;
+      value       = newValue;
     }
     return returnValue;
   }
