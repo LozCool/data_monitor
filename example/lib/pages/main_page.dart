@@ -2,20 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:data_monitor/data_listener.dart';
 
-import '../models/model_a.dart';
-import '../models/model_b.dart';
+import '../global.dart';
 import 'secondary_page.dart';
 
 class MainPage extends StatelessWidget
 {
-  late final ModelA modelA;
-  late final ModelB modelB;
-
-  MainPage({super.key})
-  {
-    modelA = DataListener.prepare(constructor: ModelA.new);
-    modelB = DataListener.prepare(constructor: ModelB.new);
-  }
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +33,8 @@ class MainPage extends StatelessWidget
             title: Text('State Management Main Page')
         ),
         body: Center(
-            child: DataListener<ModelA>(
+            child: DataListener(
+                modelA,
                 builder: (BuildContext context) {
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +44,8 @@ class MainPage extends StatelessWidget
                             '${modelA.testInteger}',
                             style: Theme.of(context).textTheme.headlineMedium
                         ),
-                        DataListener<ModelB>(
+                        DataListener(
+                            modelB,
                             builder: ((BuildContext context) {
                               return Text(
                                   '${modelB.testInteger}',

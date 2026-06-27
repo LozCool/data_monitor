@@ -1,7 +1,4 @@
-import 'package:data_monitor/annotations.dart';
-import 'package:data_monitor/collections.dart';
-import 'package:data_monitor/data_item.dart';
-import 'package:data_monitor/data_notifier.dart';
+import 'package:data_monitor/data_monitor.dart';
 
 part 'model_a.g.dart';
 
@@ -19,8 +16,8 @@ abstract class ModelAData extends DataNotifier
   @monitor
   String testString = '';
 
-//  MonitoredList<ModelA, String> testList = MonitoredList();
-  MonitoredList<ModelA, String>     testList = MonitoredList.from(['A', 'B', 'C']);
-  MonitoredMap<ModelA, int, String> testMap  = MonitoredMap();
-  MonitoredSet<ModelA, String>      testSet  = MonitoredSet();
+  // late MonitoredList<String> testList = MonitoredList(this);
+  late MonitoredList<String>     testList = MonitoredList.from(this, ['A', 'B', 'C']);
+  late MonitoredMap<int, String> testMap  = MonitoredMap(this);
+  late MonitoredSet<String>      testSet  = MonitoredSet(this);
 }

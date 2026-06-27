@@ -1,6 +1,4 @@
-import 'package:data_monitor/annotations.dart';
-import 'package:data_monitor/data_item.dart';
-import 'package:data_monitor/data_notifier.dart';
+import 'package:data_monitor/data_monitor.dart';
 
 part 'model_b.g.dart';
 

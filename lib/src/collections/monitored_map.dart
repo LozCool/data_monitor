@@ -1,47 +1,44 @@
 import 'package:collection/collection.dart';
 
-import 'package:data_monitor/data_notifier.dart';
-import 'package:data_monitor/data_listener.dart';
+import '../utilities/data_notifier.dart';
 
 /// A `Map<K, V>` that is monitored for internal changes which then
-/// notify the data model within which it is declared.
-class MonitoredMap<T, K, V> extends DelegatingMap<K, V>
+/// notify the data model with which it was instantiated.
+class MonitoredMap<K, V> extends DelegatingMap<K, V>
 {
-  late final DataNotifier _model;
+  final DataNotifier _model;
 
-  bool _isInitialized = false;
-
-  MonitoredMap() : super(<K, V>{});
+  MonitoredMap(this._model) : super(<K, V>{});
 
   @override
   void operator []=(K key, V value) {
     super[key] = value;
-    notify();
+    _model.notify();
   }
 
   @override
   void addAll(Map<K, V> other) {
     super.addAll(other);
-    notify();
+    _model.notify();
   }
 
   @override
   void addEntries(Iterable<MapEntry<K, V>> entries) {
     super.addEntries(entries);
-    notify();
+    _model.notify();
   }
 
   @override
   void clear() {
     super.clear();
-    notify();
+    _model.notify();
   }
 
   @override
   V putIfAbsent(K key, V Function() ifAbsent) {
     V returnValue = super.putIfAbsent(key, ifAbsent);
 
-    notify();
+    _model.notify();
 
     return returnValue;
   }
@@ -50,7 +47,7 @@ class MonitoredMap<T, K, V> extends DelegatingMap<K, V>
   V? remove(Object? key) {
     V? returnValue = super.remove(key);
 
-    notify();
+    _model.notify();
 
     return returnValue;
   }
@@ -58,14 +55,14 @@ class MonitoredMap<T, K, V> extends DelegatingMap<K, V>
   @override
   void removeWhere(bool Function(K, V) test) {
     super.removeWhere(test);
-    notify();
+    _model.notify();
   }
 
   @override
   V update(K key, V Function(V) update, {V Function()? ifAbsent}) {
     V returnValue = super.update(key, update, ifAbsent: ifAbsent);
 
-    notify();
+    _model.notify();
 
     return returnValue;
   }
@@ -73,14 +70,6 @@ class MonitoredMap<T, K, V> extends DelegatingMap<K, V>
   @override
   void updateAll(V Function(K, V) update) {
     super.updateAll(update);
-    notify();
-  }
-
-  void notify() {
-    if (!_isInitialized) {
-      _isInitialized = true;
-      _model         = DataListener.model<T>() as DataNotifier;
-    }
     _model.notify();
   }
 }

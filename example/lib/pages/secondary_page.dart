@@ -2,21 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:data_monitor/data_listener.dart';
 
-import '../models/model_a.dart';
-import '../models/model_b.dart';
+import '../global.dart';
 
 class SecondaryPage extends StatelessWidget
 {
-  late final ModelA                modelA;
-  late final ModelB                modelB;
   late final TextEditingController firstController;
   late final TextEditingController lastController;
 
   SecondaryPage({super.key})
   {
-    modelA = DataListener.prepare(constructor: ModelA.new);
-    modelB = DataListener.prepare(constructor: ModelB.new);
-
     firstController = TextEditingController(text: modelB.firstName);
     lastController  = TextEditingController(text: modelB.lastName );
   }
@@ -34,7 +28,8 @@ class SecondaryPage extends StatelessWidget
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text('You have pushed the button this many times:'),
-              DataListener<ModelA>(
+              DataListener(
+                  modelA,
                   builder: ((BuildContext context) {
                     return Text(
                         '${modelA.testInteger}',
@@ -42,7 +37,8 @@ class SecondaryPage extends StatelessWidget
                     );
                   })
               ),
-              DataListener<ModelB>(
+              DataListener(
+                  modelB,
                   builder: ((BuildContext context) {
                     return Text(
                         '${modelB.testInteger}',
@@ -67,7 +63,8 @@ class SecondaryPage extends StatelessWidget
                     )
                   ]
               ),
-              DataListener<ModelB>(
+              DataListener(
+                  modelB,
                   builder: ((BuildContext context) {
                     return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
