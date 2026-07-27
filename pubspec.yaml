@@ -3,8 +3,6 @@ description: "A Data Monitor package that encapsulates Annotations, Example and 
 repository: https://github.com/LozCool/data_monitor
 version: 2.2.0
 
-publish_to: none
-
 environment:
   sdk: ^3.12.0
   flutter: ">=1.17.0"
