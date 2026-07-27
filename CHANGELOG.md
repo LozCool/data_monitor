@@ -1,12 +1,12 @@
-## 2.2.1
+## 2.2.1, 2.2.2
 
-Updated documentation in Readme.md
+Updated documentation in Readme.md (Only).
 
 ## 2.2.0
 
 The software has been tested in a production application ('Technic Dynamics')
 which has approximately 20K lines of code. It now provides top-of-class
-State Management abilites.
+State Management abilities.
 
 Additions in this release are:
 

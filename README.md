@@ -61,7 +61,7 @@ providing their extra function. As such, they also respect `@cache` properties
 
 ```dart
 @dataMonitor
-abstract class ModelData extends DataNotifier
+abstract class _ModelData extends DataNotifier
 {
   @propagate
   String firstName = 'Joe';
@@ -82,7 +82,7 @@ is slow or complicated, you could use the following:
 
 ```dart
 @dataMonitor
-abstract class ModelData extends DataNotifier
+abstract class _ModelData extends DataNotifier
 {
   @monitor
   String firstName = 'Joe';
