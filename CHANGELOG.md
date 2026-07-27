@@ -1,3 +1,27 @@
+## 2.2.0
+
+The software has been tested in a production application ('Technic Dynamics')
+which has approximately 20K lines of code. It now provides top-of-class
+State Management abilites.
+
+Additions in this release are:
+
+  1. Provides a new `@propagate` annotation, which allows v2.2.0 of
+     the `data_monitor_generators` package to propagate property
+     changes internally to facilitate 'side-effects'.
+
+  2. The /example sources have been updated to show how to use
+     the new functionality.
+
+## 2.1.0
+
+The `DataListener` class constructor now takes a `List<DataNotifier>`
+parameter that contains one or more data model instances to be
+monitored.
+
+This is a BREAKING CHANGE since the class now expects `[x, y]` or
+`[x]` instead of just `x`
+
 ## 2.0.0
 
 This is a major revision of the package but includes BREAKING CHANGES. Feel

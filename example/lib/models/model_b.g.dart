@@ -6,47 +6,52 @@ part of 'model_b.dart';
 // DataMonitorGenerator
 // **************************************************************************
 
-mixin _$ModelBData on ModelBData {
-  late final DataItem _testInteger = DataItem(testInteger, []);
+mixin _$ModelB on _ModelB {
+  late final DataItem _counter = DataItem(this, super.counter);
 
   @override
-  set testInteger(int value) {
-    if (_testInteger.setValue(value)) {
-      notify(() {
-        super.testInteger = value;
-      });
-    }
+  int get counter {
+    return _counter.getValue();
   }
 
-  late final DataItem _firstName = DataItem(firstName, [
+  @override
+  set counter(int value) {
+    _counter.setValue(value);
+  }
+
+  late final DataItem _firstName = DataItem(this, super.firstName, [
     _fullName,
     _reversedFullName,
   ]);
+
+  @override
+  String get firstName {
+    return _firstName.getValue();
+  }
 
   @override
   set firstName(String value) {
-    if (_firstName.setValue(value)) {
-      notify(() {
-        super.firstName = value;
-      });
-    }
+    _firstName.setValue(value);
+
+    firstNamePropagate(value);
   }
 
-  late final DataItem _lastName = DataItem(lastName, [
+  late final DataItem _lastName = DataItem(this, super.lastName, [
     _fullName,
     _reversedFullName,
   ]);
 
   @override
-  set lastName(String value) {
-    if (_lastName.setValue(value)) {
-      notify(() {
-        super.lastName = value;
-      });
-    }
+  String get lastName {
+    return _lastName.getValue();
   }
 
-  late final DataProperty _fullName = DataProperty(super.fullName);
+  @override
+  set lastName(String value) {
+    _lastName.setValue(value);
+  }
+
+  late final DataProperty _fullName = DataProperty();
 
   @override
   String get fullName {
@@ -55,9 +60,7 @@ mixin _$ModelBData on ModelBData {
         : _fullName.value;
   }
 
-  late final DataProperty _reversedFullName = DataProperty(
-    super.reversedFullName,
-  );
+  late final DataProperty _reversedFullName = DataProperty();
 
   @override
   String get reversedFullName {

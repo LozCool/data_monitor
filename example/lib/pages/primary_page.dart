@@ -6,12 +6,14 @@ import '../models/model_a.dart';
 import '../models/model_b.dart';
 import 'secondary_page.dart';
 
-class MainPage extends StatelessWidget
+class PrimaryPage extends StatelessWidget
 {
-  const MainPage({super.key});
+  const PrimaryPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+      BuildContext context)
+  {
     return Scaffold(
         appBar: AppBar(
             actions: [
@@ -20,7 +22,9 @@ class MainPage extends StatelessWidget
                     Navigator.push(
                         context,
                         MaterialPageRoute<void>(
-                            builder: (BuildContext context) {
+                            builder: (
+                                BuildContext context)
+                            {
                               return SecondaryPage();
                             }
                         )
@@ -31,12 +35,14 @@ class MainPage extends StatelessWidget
             ],
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             centerTitle: true,
-            title: Text('State Management Main Page')
+            title: Text('State Management Primary Page')
         ),
         body: Center(
             child: DataListener(
                 [modelA, modelB],
-                builder: (BuildContext context) {
+                builder: (
+                    BuildContext context)
+                {
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -76,7 +82,10 @@ class MainPage extends StatelessWidget
                             child: Align(
                                 alignment: Alignment.center,
                                 child: ListView.builder(
-                                    itemBuilder: (BuildContext context, int index) {
+                                    itemBuilder: (
+                                        BuildContext context,
+                                        int          index)
+                                    {
                                       return Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
@@ -94,7 +103,10 @@ class MainPage extends StatelessWidget
                             child: Align(
                                 alignment: Alignment.center,
                                 child: ListView.builder(
-                                    itemBuilder: (BuildContext context, int index) {
+                                    itemBuilder: (
+                                        BuildContext context,
+                                        int          index)
+                                    {
                                       return Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
@@ -112,7 +124,10 @@ class MainPage extends StatelessWidget
                             child: Align(
                                 alignment: Alignment.center,
                                 child: ListView.builder(
-                                    itemBuilder: (BuildContext context, int index) {
+                                    itemBuilder: (
+                                        BuildContext context,
+                                        int          index)
+                                    {
                                       return Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [

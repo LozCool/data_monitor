@@ -10,9 +10,9 @@ class MonitoredList<E> extends DelegatingList<E>
 {
   final DataNotifier _model;
 
-  MonitoredList(this._model) : super(<E>[]);
+  const MonitoredList.from(this._model, super.list);
 
-  MonitoredList.from(this._model, super.list);
+  MonitoredList(this._model) : super(<E>[]);
 
   @override
   void operator []=(int index, E value) {

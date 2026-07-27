@@ -1,7 +1,9 @@
 name: data_monitor
 description: "A Data Monitor package that encapsulates Annotations, Example and Utilities."
 repository: https://github.com/LozCool/data_monitor
-version: 2.0.0
+version: 2.2.0
+
+publish_to: none
 
 environment:
   sdk: ^3.12.0

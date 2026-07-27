@@ -1,7 +1,7 @@
-/// `DataMonitor` provides the `@dataMonitor` annotation for use in your data model classes.
-class DataMonitor
+/// `DataMonitorAnnotation` provides the `@dataMonitor` annotation for use in your data model classes.
+class DataMonitorAnnotation
 {
-  const DataMonitor();
+  const DataMonitorAnnotation();
 }
 
-const DataMonitor dataMonitor = DataMonitor();
+const DataMonitorAnnotation dataMonitor = DataMonitorAnnotation();

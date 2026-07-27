@@ -8,6 +8,8 @@ class MonitoredMap<K, V> extends DelegatingMap<K, V>
 {
   final DataNotifier _model;
 
+  const MonitoredMap.from(this._model, super.map);
+
   MonitoredMap(this._model) : super(<K, V>{});
 
   @override

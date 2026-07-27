@@ -2,30 +2,40 @@ import 'package:data_monitor/data_monitor.dart';
 
 part 'model_b.g.dart';
 
-class ModelB extends ModelBData with _$ModelBData
+ModelB modelB = ModelB();
+
+class ModelB extends _ModelB with _$ModelB
 {
   // Other methods etc for class
 }
 
 @dataMonitor
-abstract class ModelBData extends DataNotifier
+abstract class _ModelB extends DataNotifier
 {
   @monitor
-  int testInteger = 0;
+  int counter = 0;
 
-  @monitor
+  @propagate
   String firstName = '';
+
+  void firstNamePropagate(
+      String value)
+  {
+    lastName = '';
+  }
 
   @monitor
   String lastName = '';
 
   @cache
-  String get fullName {
+  String get fullName
+  {
     return '$firstName $lastName';
   }
 
   @cache
-  String get reversedFullName {
+  String get reversedFullName
+  {
     return '$lastName,  $firstName';
   }
 }

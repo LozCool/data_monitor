@@ -11,11 +11,11 @@ You can create an example Flutter application that uses `data_monitor` by:
 
 ```
   dependencies:
-    data_monitor: ^2.0.0
+    data_monitor: ^2.1.0
   
   dev_dependencies:
     build_runner: ^2.15.0
-    data_monitor_generators: ^2.0.0
+    data_monitor_generators: ^2.1.0
 ```
 
 4. Perform a `pub get` to get the packages listed above.

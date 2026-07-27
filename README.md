@@ -29,12 +29,18 @@ all the verbose State code that is usually associated with a `StatefulWidget`.
 
 ## Getting started
 
-The package is very simple to use. Just add code like the following to your
-data model class:
+The package is very simple to use. Just add code like the following to
+create your data model class:
 
 ```dart
+class ModelData extends _ModelData with _$ModelData
+{
+  // Other methods etc for class
+}
+
 @dataMonitor
-abstract class ModelData extends DataNotifier {
+abstract class ModelData extends DataNotifier
+{
   @monitor
   int count = 0;
 
@@ -43,15 +49,35 @@ abstract class ModelData extends DataNotifier {
 }
 ```
 
-## Caching Property Getters
+## Propagating Changes to Property Values
 
-You can cache property 'values' internally to great effect, when used
-correctly. For example, if you had to collect data from a source that
-was slow or complicated, you could use the following:
+When a property value changes, you can ask for its new value to be propagated.
+This allows 'side-effects' or cascades to be implemented. A really simple
+example can be found in the `/example` directory.
 
 ```dart
 @dataMonitor
 abstract class ModelData extends DataNotifier {
+  @propagate
+  String firstName = 'Joe';
+
+  void firstNamePropagate(String value) {
+    // Do something useful with the new value,
+    // like setting derived properties
+  }
+}
+```
+
+## Caching Property Getters
+
+You can cache property 'values' internally to great effect, when used
+correctly. For example, if you had to collect data from a source that
+is slow or complicated, you could use the following:
+
+```dart
+@dataMonitor
+abstract class ModelData extends DataNotifier
+{
   @monitor
   String firstName = 'Joe';
 
@@ -59,7 +85,8 @@ abstract class ModelData extends DataNotifier {
   String lastName = 'Bloggs';
 
   @cache
-  Future<String> get fullName async {
+  Future<String> get fullName async
+  {
     // Performs a big task asynchronously, such as getting data
     // from an external database
 

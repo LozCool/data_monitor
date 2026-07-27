@@ -6,15 +6,16 @@ import 'src/utilities/data_notifier.dart';
 
 /// A widget that does not have any mutable state.
 ///
-/// It does, however, take an instance argument that can be described as a
-/// data repository, or model. The model should already have been constructed
-/// prior to calling this class. It can, therefore, be shared across multiple
-/// instances of the `DataListener` widget.
+/// It does, however, take an argument which is a list of what can be described
+/// as data repositories, or models. The models in the list should already have
+/// been constructed prior to calling this class. A range of chosen models can,
+/// therefore, be shared across multiple instances of the `DataListener` widget.
 ///
 /// The `DataListener` widget will only be rebuilt when it receives change
-/// notifications from the associated data model. This is an implementation
-/// detail as it subscribes for such notifications internally. Also, it
-/// tracks only changes to the data model passed as a constructor argument.
+/// notifications from any of the associated data models. This is an
+/// implementation detail as it subscribes for such notifications internally.
+/// Also, it tracks only changes to the data models passed as a list in the
+/// constructor argument.
 ///
 /// The widget requires a builder `Function` that describes part of the user
 /// interface by building a constellation of other widgets that describe the
@@ -29,28 +30,37 @@ import 'src/utilities/data_notifier.dart';
 /// can be sourced from anywhere.
 class DataListener extends HookWidget
 {
-       final DataNotifier                  _model;
-       final Widget Function(BuildContext) _builder;
-  late final VoidCallback                  _listener;
+  late final void Function() _onNotified;
+
+ final List<DataNotifier>            _models;
+ final Widget Function(BuildContext) _builder;
 
   DataListener(
-      this._model,
+      this._models,
 
       {required this._builder}) : super(key: GlobalKey())
   {
       void listener() {
-        Element element = (super.key as GlobalKey).currentContext as Element;
+        Element element = (key as GlobalKey).currentContext as Element;
 
         element.markNeedsBuild();
       }
-      _model.addListener(_listener = listener);
+      _onNotified = listener;
+
+      for (DataNotifier model in _models) {
+        model.addListener(_onNotified);
+      }
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+      BuildContext context)
+  {
     useEffect(() {
       return () {
-        _model.removeListener(_listener);
+        for (DataNotifier model in _models) {
+          model.removeListener(_onNotified);
+        }
       };
     }, []);
 

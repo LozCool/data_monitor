@@ -1,7 +1,7 @@
-/// `Cache` provides the `@cache` annotation for use in your data model classes.
-class Cache
+/// `CacheAnnotation` provides the `@cache` annotation for use in your data model classes.
+class CacheAnnotation
 {
-  const Cache();
+  const CacheAnnotation();
 }
 
-const Cache cache = Cache();
+const CacheAnnotation cache = CacheAnnotation();

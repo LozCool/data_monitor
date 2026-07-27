@@ -6,26 +6,58 @@ part of 'model_a.dart';
 // DataMonitorGenerator
 // **************************************************************************
 
-mixin _$ModelAData on ModelAData {
-  late final DataItem _testInteger = DataItem(testInteger, []);
+mixin _$ModelA on _ModelA {
+  late final DataItem _counter = DataItem(this, super.counter);
 
   @override
-  set testInteger(int value) {
-    if (_testInteger.setValue(value)) {
-      notify(() {
-        super.testInteger = value;
-      });
-    }
+  int get counter {
+    return _counter.getValue();
   }
 
-  late final DataItem _testString = DataItem(testString, []);
+  @override
+  set counter(int value) {
+    _counter.setValue(value);
+  }
+
+  late final DataItem _testString = DataItem(this, super.testString);
+
+  @override
+  String get testString {
+    return _testString.getValue();
+  }
 
   @override
   set testString(String value) {
-    if (_testString.setValue(value)) {
-      notify(() {
-        super.testString = value;
-      });
-    }
+    _testString.setValue(value);
+  }
+
+  late final DataItem _testList = DataItem(
+    this,
+    MonitoredList<String>.from(this, super.testList),
+  );
+
+  @override
+  List<String> get testList {
+    return _testList.getValue();
+  }
+
+  late final DataItem _testMap = DataItem(
+    this,
+    MonitoredMap<int, String>.from(this, super.testMap),
+  );
+
+  @override
+  Map<int, String> get testMap {
+    return _testMap.getValue();
+  }
+
+  late final DataItem _testSet = DataItem(
+    this,
+    MonitoredSet<String>.from(this, super.testSet),
+  );
+
+  @override
+  Set<String> get testSet {
+    return _testSet.getValue();
   }
 }

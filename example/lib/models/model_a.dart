@@ -2,22 +2,28 @@ import 'package:data_monitor/data_monitor.dart';
 
 part 'model_a.g.dart';
 
-class ModelA extends ModelAData with _$ModelAData
+ModelA modelA = ModelA();
+
+class ModelA extends _ModelA with _$ModelA
 {
   // Other methods etc for class
 }
 
 @dataMonitor
-abstract class ModelAData extends DataNotifier
+abstract class _ModelA extends DataNotifier
 {
   @monitor
-  int testInteger = 0;
+  int counter = 0;
 
   @monitor
   String testString = '';
 
-  // late MonitoredList<String> testList = MonitoredList(this);
-  late MonitoredList<String>     testList = MonitoredList.from(this, ['A', 'B', 'C']);
-  late MonitoredMap<int, String> testMap  = MonitoredMap(this);
-  late MonitoredSet<String>      testSet  = MonitoredSet(this);
+  @monitor
+  final List<String> testList = [ 'A - B - C' ];
+
+  @monitor
+  final Map<int, String> testMap = { 1: 'Hello' };
+
+  @monitor
+  final Set<String> testSet = { 'First' };
 }

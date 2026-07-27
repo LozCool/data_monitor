@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'pages/main_page.dart';
+import 'pages/primary_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Application());
 }
 
-class MyApp extends StatelessWidget
+class Application extends StatelessWidget
 {
-  const MyApp({super.key});
+  const Application({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: MainPage(),
+        home: PrimaryPage(),
         theme: ThemeData(
             colorScheme: .fromSeed(seedColor: Colors.deepPurple)
         )

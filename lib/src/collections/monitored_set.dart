@@ -8,6 +8,8 @@ class MonitoredSet<E> extends DelegatingSet<E>
 {
   final DataNotifier _model;
 
+  const MonitoredSet.from(this._model, super.set);
+
   MonitoredSet(this._model) : super(<E>{});
 
   @override

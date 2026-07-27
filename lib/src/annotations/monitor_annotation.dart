@@ -1,7 +1,7 @@
-/// `Monitor` provides the `@monitor` annotation for use in your data model classes.
-class Monitor
+/// `MonitorAnnotation` provides the `@monitor` annotation for use in your data model classes.
+class MonitorAnnotation
 {
-  const Monitor();
+  const MonitorAnnotation();
 }
 
-const Monitor monitor = Monitor();
+const MonitorAnnotation monitor = MonitorAnnotation();

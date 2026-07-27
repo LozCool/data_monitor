@@ -1,6 +1,7 @@
 export 'src/annotations/cache_annotation.dart';
 export 'src/annotations/data_monitor_annotation.dart';
 export 'src/annotations/monitor_annotation.dart';
+export 'src/annotations/propagate_annotation.dart';
 
 export 'src/collections/monitored_list.dart';
 export 'src/collections/monitored_map.dart';
