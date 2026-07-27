@@ -1,3 +1,7 @@
+## 2.2.1
+
+Updated documentation in Readme.md
+
 ## 2.2.0
 
 The software has been tested in a production application ('Technic Dynamics')

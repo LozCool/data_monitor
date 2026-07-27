@@ -39,7 +39,7 @@ class ModelData extends _ModelData with _$ModelData
 }
 
 @dataMonitor
-abstract class ModelData extends DataNotifier
+abstract class _ModelData extends DataNotifier
 {
   @monitor
   int count = 0;
@@ -55,13 +55,19 @@ When a property value changes, you can ask for its new value to be propagated.
 This allows 'side-effects' or cascades to be implemented. A really simple
 example can be found in the `/example` directory.
 
+Note: `@propagate` properties `@monitor` their value at the same time as
+providing their extra function. As such, they also respect `@cache` properties
+(see below).
+
 ```dart
 @dataMonitor
-abstract class ModelData extends DataNotifier {
+abstract class ModelData extends DataNotifier
+{
   @propagate
   String firstName = 'Joe';
 
-  void firstNamePropagate(String value) {
+  void firstNamePropagate(String value)
+  {
     // Do something useful with the new value,
     // like setting derived properties
   }
